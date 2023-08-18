@@ -20,9 +20,9 @@
   --text-color: #000;
 
   /* fonts */
-  --body-font-family: 'Open Sans', sans-serif;
+  --body-font-family: roboto;
   --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Open Sans', sans-serif;
+  --fixed-font-family: roboto;
 
   /* body sizes */
   --body-font-size-m: 0.875rem;
