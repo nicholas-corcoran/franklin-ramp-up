@@ -86,12 +86,12 @@ footer .footer-copyright {
     text-align: left;
   }
 
-  footer .footer-table div:nth-child(2) {
-    order: -1; /* Move the second child to the beginning */
+  footer .footer-table div {
+    border-bottom: 1px solid rgba(255 255 255 / 20%);
   }
 
-  footer .footer-table div {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  footer .footer-table div:nth-child(2) {
+    order: -1; /* Move the second child to the beginning */
   }
 
   footer .footer-table div:last-child {

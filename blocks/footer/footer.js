@@ -12,7 +12,7 @@ export default async function decorate(block) {
   const footerPath = cfg.footer || '/footer';
   const resp = await fetch(
     `${footerPath}.plain.html`,
-    window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {}
+    window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {},
   );
 
   if (resp.ok) {
@@ -26,10 +26,7 @@ export default async function decorate(block) {
 
     const footerBackgroundImage = footerHtml.getElementsByTagName('picture')[0];
     const footerElements = Array.from(footerHtml.getElementsByTagName('div'));
-    const footerTableElements = footerElements.slice(
-      1,
-      footerElements.length - 1
-    );
+    const footerTableElements = footerElements.slice(1, footerElements.length - 1);
 
     const footerTable = document.createElement('div');
     footerTable.classList.add('footer-table');

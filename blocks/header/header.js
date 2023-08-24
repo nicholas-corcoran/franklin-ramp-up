@@ -17,22 +17,23 @@ function toggleContainer(menu, forceExpanded = null) {
 }
 
 /**
- * Toggles the presence of a list item within a container, based on the provided navigation section (navSection)
- * @param {*} navSection Object representing the navigation section to be toggled. Should contain keys: textContent, href.
- * @param {*} container DOM element representing the container where the list item should be toggled.
- * @param {*} append A boolean indicating whether the item should be appended (true) or prepended (false) to the container. Default is true.
- * @param {*} forceExpanded A boolean indicating whether to forcefully remove the item. Default is null.
+ * Toggles the presence of a list item within a container,
+ * based on the provided navigation section (navSection)
+ * @param {*} navSection Object representing the navigation
+ * section to be toggled. Should contain keys: textContent, href.
+ * @param {*} container DOM element representing the container
+ * where the list item should be toggled.
+ * @param {*} append A boolean indicating whether the item should
+ * be appended (true) or prepended (false) to the container. Default is true.
+ * @param {*} forceExpanded A boolean indicating whether
+ * to forcefully remove the item. Default is null.
  * @returns
  */
-function toggleNavSectionListItems(
-  navSection,
-  container,
-  append = true,
-  forceExpanded = null
-) {
+function toggleNavSectionListItems(navSection, container, append = true, forceExpanded = null) {
   const ulElement = container.querySelector('ul');
 
   if (!ulElement) {
+    // eslint-disable-next-line no-console
     console.error('Container does not contain a UL element.');
     return;
   }
@@ -102,6 +103,9 @@ export default async function decorate(block) {
     const header = document.querySelector('header');
     header.append(menuContainer);
 
+    const menuUnderlay = document.createElement('div');
+    menuUnderlay.classList.add('menu-underlay');
+
     const toggleMenu = (forceExpanded = null) => {
       toggleContainer(menuContainer, forceExpanded);
       toggleContainer(menuUnderlay, forceExpanded);
@@ -112,7 +116,7 @@ export default async function decorate(block) {
         },
         menuContainer,
         false,
-        forceExpanded
+        forceExpanded,
       );
       toggleNavSectionListItems(
         {
@@ -121,12 +125,10 @@ export default async function decorate(block) {
         },
         menuContainer,
         true,
-        forceExpanded
+        forceExpanded,
       );
     };
 
-    const menuUnderlay = document.createElement('div');
-    menuUnderlay.classList.add('menu-underlay');
     menuUnderlay.addEventListener('click', () => toggleMenu());
     header.append(menuUnderlay);
 
